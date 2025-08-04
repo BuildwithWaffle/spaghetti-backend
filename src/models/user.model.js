@@ -10,6 +10,11 @@ const userSchema = new Schema({
         lowercase: true,
         trim: true,
     },
+    enrollmentNumber: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     fullName: {
         type: String,
         required: true,
@@ -21,7 +26,7 @@ const userSchema = new Schema({
         minlength: 6,
     },
     avatar: {
-        type: String,
+        type: String, //cloudinary URL
         required: true,
         trim: true,
         index: true,
@@ -30,11 +35,17 @@ const userSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    currentSemester: {
+      type: Schema.Types.ObjectId,
+      ref: 'Semester',
+      required: false,
+    },
     refreshToken: {
         type: String,
     }
 }, {
     timestamps: true,
+    collection: "users",
 })
 
 userSchema.pre("save", async function (next) {
