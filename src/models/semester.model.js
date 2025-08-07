@@ -18,4 +18,4 @@ const SemesterSchema = new Schema(
   }
 );
 
-export const Semester = mongoose.model("Semester", SemesterSchema);
+export const Semester = mongoose.model("Semester", SemesterSchema); 
